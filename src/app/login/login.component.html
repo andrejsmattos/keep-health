@@ -1,0 +1,23 @@
+<div class="login">
+  <form (ngSubmit)="entrar()" [formGroup]="form">
+
+    <div class="elemento-form">
+      <label for="email">Email </label>
+      <input type="email" name="email">
+    </div>
+
+    <div class="elemento-form">
+      <label for="senha">Senha </label>
+      <input type="password" name="senha">
+    </div>
+
+    <div class="botoes-form">
+      <button class="btn-entrar" type="submit">Entrar</button>
+      <button class="btn-esqueci-senha" type="submit">Esqueci a senha</button>
+    </div>
+
+    <div class="botoes-form">
+      <button class="btn-cadastrar" (click)="cadastrar()" type="submit">Cadastrar-me</button>
+    </div>
+  </form>
+</div>
