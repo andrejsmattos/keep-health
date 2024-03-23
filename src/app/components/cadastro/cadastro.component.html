@@ -1,33 +1,38 @@
+<app-sidebar />
 <div class="cadastro">
-  <form (ngSubmit)="cadastrar()" [formGroup]="form">
+  <form (ngSubmit)="cadastrarUsuario()" [formGroup]="infoCadastro">
 
     <div class="elemento-form">
       <label for="nome">Nome: </label>
-      <input name="nome" type="text" formControlName="nome">
+      <input name="nome" type="text" formControlName="nome" required>
     </div>
     
     <div class="elemento-form">
       <label for="email">Email </label>
-      <input name="email" type="email" formControlName="email">
+      <input name="email" type="email" formControlName="email" required>
     </div>
     
     <div class="elemento-form">
       <label for="dataNascimento">Data de nascimento </label>
-      <input name="dataNascimento" type="date" formControlName="dataNascimento">
+      <input name="dataNascimento" type="date" formControlName="dataNascimento" required>
     </div>
 
     <div class="elemento-form">
       <label for="senha">Senha: </label>
-      <input name="senha" type="password" formControlName="senha">
+      <input name="senha" type="password" formControlName="senha" required>
     </div>
 
     <div class="elemento-form">
       <label for="confirmarSenha">Confirmar senha: </label>
-      <input name="confirmarSenha" type="password" formControlName="confirmarSenha">
+      <input name="confirmarSenha" type="password" formControlName="confirmarSenha" required>
     </div>
 
     <div class="botoes-form">
       <button class="btn-cadastrar" type="submit">Cadastrar</button>
+    </div>
+
+    <div class="botoes-form">
+      <button class="btn-voltar" (click)="voltarLogin()">Voltar</button>
     </div>
   </form>
 </div>

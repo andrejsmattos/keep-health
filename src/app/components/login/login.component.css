@@ -1,0 +1,81 @@
+/* Reset de estilos */
+* {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo do formulário */
+.login {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo dos elementos do formulário */
+.elemento-form {
+  margin-bottom: 20px;
+}
+
+.elemento-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.elemento-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+
+.botoes-form button {
+  font-size: 14px;
+  width: calc(50% - 5px); /* Dividir a largura por 2 e subtrair a margem */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botoes-form .btn-entrar {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.botoes-form .btn-entrar:hover {
+  background-color: #0056b3;
+}
+
+.btn-entrar {
+  margin-right: 5px; /* Adicionar uma margem à direita para separar os botões */
+}
+
+.btn-cadastrar {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-cadastrar:hover {
+  background-color: #218838;
+}
+
+.btn-esqueci-senha {
+  background-color: transparent;
+  color: #007bff;
+  width: 100%;
+  margin-top: 10px; /* Adicionado para separar o botão "Esqueci a senha" */
+}
+
+.btn-esqueci-senha:hover {
+  text-decoration: underline;
+}
+
