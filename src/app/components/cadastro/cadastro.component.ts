@@ -22,8 +22,10 @@ interface Usuario {
     RouterLink
   ]
 })
+
+//conecta dados de formulário de template e TS
 export class CadastroComponent {
-  infoCadastro = new FormGroup({
+  formCadastro = new FormGroup({
     nome: new FormControl(''),
     email: new FormControl(''),
     dataNascimento: new FormControl(''),
@@ -39,41 +41,50 @@ export class CadastroComponent {
   
 
   cadastrarUsuario() {
+    //confirma se todos os campos foram preenchidos
     if (
-      this.infoCadastro.value.nome === '' ||
-      this.infoCadastro.value.email === '' ||
-      this.infoCadastro.value.dataNascimento === '' ||
-      this.infoCadastro.value.senha === ''
+      this.formCadastro.value.nome === '' ||
+      this.formCadastro.value.email === '' ||
+      this.formCadastro.value.dataNascimento === '' ||
+      this.formCadastro.value.senha === ''
     ) {
       alert('Preencha todos os campos para concluir seu cadastro');
-    } else if (this.infoCadastro.value.senha !== this.infoCadastro.value.confirmarSenha) {
+
+      //confirma se as senhas conferem
+    } else if (this.formCadastro.value.senha !== this.formCadastro.value.confirmarSenha) {
       alert('A senha dos campos "senha" e "confirmar senha" devem ser iguais');
     } else {
+
+      //se campos estiverem preenchidos e senhas conferirem um novo usuário é criado
       const novoUsuario: Usuario = {
-        nome: this.infoCadastro.value.nome ?? '',
-        email: this.infoCadastro.value.email ?? '',
-        dataNascimento: this.infoCadastro.value.dataNascimento ?? '',
-        senha: this.infoCadastro.value.senha ?? '',
+        nome: this.formCadastro.value.nome ?? '',
+        email: this.formCadastro.value.email ?? '',
+        dataNascimento: this.formCadastro.value.dataNascimento ?? '',
+        senha: this.formCadastro.value.senha ?? '',
       };
   
+      //se email já estiver cadastrado no localStorage usuário é redirecionado para tela de login
       let listaUsuarios = this.getUsersStorage();
       if (listaUsuarios.find((user: Usuario) => user.email === novoUsuario.email)) {
         alert(`Email já está cadastrado. Faça o login para iniciar sua sessão.`);
         this.router.navigate(['/login']);
+
+        // novo usuário é adicionado na lista de usuários, enviada para a loalStorage
       } else {
         listaUsuarios.push(novoUsuario);
         this.localStorage?.setItem('usuarioCadastrado', JSON.stringify(listaUsuarios));
         alert('Usuário cadastrado com sucesso!');
-        this.infoCadastro.reset();
+        this.formCadastro.reset();
       }
     }
   }
   
-
+  // volta para tela de login
   voltarLogin(){
     this.router.navigate(['/login']);
   };
 
+  // armazena lista de usuários no localStorage
   getUsersStorage(){
     const listaVazia: Usuario[] = [];
     const usuarios = this.localStorage?.getItem('usuarioCadastrado');

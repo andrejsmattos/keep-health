@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SidebarComponent } from "../../shared/components/sidebar/sidebar.component";
@@ -11,15 +11,18 @@ import { SidebarComponent } from "../../shared/components/sidebar/sidebar.compon
     styleUrl: './login.component.css',
     imports: [ReactiveFormsModule, SidebarComponent]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  form = new FormGroup({
+  formLogin = new FormGroup({
     email: new FormControl(''),
     senha: new FormControl('')
   });
   login: any;
 
   constructor(private router: Router) {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   // let usuariosCadastrados = {
   //     constructor (email: string, senha: string) {
@@ -31,11 +34,11 @@ export class LoginComponent {
   // };
 
   entrar() {
-    // if (this.login.email && this.login.senha) {
-    //   this.router.navigate(['/home']);
-    // } else {
-    //   window.alert('Por favor, preencha os campos para prosseguir');
-    // }  
+    if (this.login.email && this.login.senha) {
+      this.router.navigate(['/home']);
+    } else {
+      window.alert('Por favor, preencha os campos para prosseguir');
+    }  
   };
 
   cadastrar() {
