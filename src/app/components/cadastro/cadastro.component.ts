@@ -4,17 +4,23 @@ import { SidebarComponent } from "../../shared/components/sidebar/sidebar.compon
 import { Router, RouterLink } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 
+interface Usuario {
+  nome: string;
+  email: string;
+  dataNascimento: string;
+  senha: string;
+}
 
 @Component({
-    selector: 'app-cadastro',
-    standalone: true,
-    templateUrl: './cadastro.component.html',
-    styleUrl: './cadastro.component.css',
-    imports: [
-      ReactiveFormsModule,
-      SidebarComponent,
-      RouterLink
-    ]
+  selector: 'app-cadastro',
+  standalone: true,
+  templateUrl: './cadastro.component.html',
+  styleUrl: './cadastro.component.css',
+  imports: [
+    ReactiveFormsModule,
+    SidebarComponent,
+    RouterLink
+  ]
 })
 export class CadastroComponent {
   infoCadastro = new FormGroup({
@@ -25,7 +31,7 @@ export class CadastroComponent {
     confirmarSenha: new FormControl(''),
   });
   localStorage: Storage | undefined;
-  listaUsuarios: string[] = [];
+  listaUsuarios: Usuario[] = [];
 
   constructor(private router: Router, @Inject(DOCUMENT) private document: Document){
     this.localStorage = document.defaultView?.localStorage;
@@ -33,44 +39,43 @@ export class CadastroComponent {
   
 
   cadastrarUsuario() {
-    if
-      (this.infoCadastro.value.nome === '' ||
+    if (
+      this.infoCadastro.value.nome === '' ||
       this.infoCadastro.value.email === '' ||
       this.infoCadastro.value.dataNascimento === '' ||
-      this.infoCadastro.value.senha === '') {
-      alert('Preencha todos os campos para concluir seu cadastro')
-    
+      this.infoCadastro.value.senha === ''
+    ) {
+      alert('Preencha todos os campos para concluir seu cadastro');
     } else if (this.infoCadastro.value.senha !== this.infoCadastro.value.confirmarSenha) {
-      alert('A senha dos campos "senha" e "confirmar senha" devem ser iguais')
-
+      alert('A senha dos campos "senha" e "confirmar senha" devem ser iguais');
     } else {
-    const usuario = { 
-      nome: this.infoCadastro.value.nome,
-      email: this.infoCadastro.value.email,
-      dataNascimento: this.infoCadastro.value.dataNascimento,
-      senha: this.infoCadastro.value.senha,
-    }
-    let listaUsuarios = this.getUsersStorage();
-    if (listaUsuarios.find
-      ((usuario: { email: string; })=> usuario.email === this.infoCadastro.value.email)){
+      const novoUsuario: Usuario = {
+        nome: this.infoCadastro.value.nome ?? '',
+        email: this.infoCadastro.value.email ?? '',
+        dataNascimento: this.infoCadastro.value.dataNascimento ?? '',
+        senha: this.infoCadastro.value.senha ?? '',
+      };
+  
+      let listaUsuarios = this.getUsersStorage();
+      if (listaUsuarios.find((user: Usuario) => user.email === novoUsuario.email)) {
         alert(`Email já está cadastrado. Faça o login para iniciar sua sessão.`);
         this.router.navigate(['/login']);
       } else {
-        this.listaUsuarios.push(usuario);
-        this.localStorage?.setItem("usuarioCadastrado", JSON.stringify(this.listaUsuarios));
-        alert("Usuário cadastrado com sucesso!");
+        listaUsuarios.push(novoUsuario);
+        this.localStorage?.setItem('usuarioCadastrado', JSON.stringify(listaUsuarios));
+        alert('Usuário cadastrado com sucesso!');
         this.infoCadastro.reset();
       }
-
     }
   }
+  
 
   voltarLogin(){
     this.router.navigate(['/login']);
   };
 
   getUsersStorage(){
-    const listaVazia: string[] = [];
+    const listaVazia: Usuario[] = [];
     const usuarios = this.localStorage?.getItem('usuarioCadastrado');
     if(!!usuarios) {
       return JSON.parse(usuarios);
@@ -78,6 +83,5 @@ export class CadastroComponent {
       this.localStorage?.setItem('usuarioCadastrado', JSON.stringify(listaVazia));
       return [];
     };
-
   }
 }
