@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SidebarComponent } from "../../shared/components/sidebar/sidebar.component";
 import { RouterLink } from '@angular/router';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
     selector: 'app-home',
@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
     imports: [
-        SidebarComponent,
+        HeaderComponent,
         RouterLink
     ]
 })
