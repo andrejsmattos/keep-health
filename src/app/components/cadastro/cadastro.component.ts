@@ -19,7 +19,10 @@ export class CadastroComponent {
   formCadastro = new FormGroup({
     nome: new FormControl(''),
     email: new FormControl(''),
+    peso: new FormControl(''),
+    altura: new FormControl(''),
     dataNascimento: new FormControl(''),
+    cep: new FormControl(''),
     senha: new FormControl(''),
     confirmarSenha: new FormControl(''),
   });

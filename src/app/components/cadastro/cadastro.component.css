@@ -17,8 +17,13 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.peso {
+  margin-bottom: 20px
+}
+
 .elemento-form {
   margin-bottom: 20px;
+
 }
 
 .elemento-form label {
@@ -56,3 +61,57 @@
 .botoes-form .btn-cadastrar:hover {
   background-color: #218838;
 }
+
+#btn-pesquisar {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btn-pesquisar,
+#btn-voltar {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+#btn-pesquisar:hover,
+#btn-voltar:hover {
+  background-color: #e0e0e0;
+}
+
+
+/* .elemento-form .peso {
+  width: calc(50% - 5px);
+}
+
+.elemento-form .altura {
+  width: calc(50% - 5px);
+}
+
+.double-element-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.double.elemento-form {
+  margin-bottom: 20px;
+}
+  
+.double.element-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+  
+.double-element-form.elemento.form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+} */
