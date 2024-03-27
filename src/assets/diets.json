@@ -1,0 +1,44 @@
+[
+  {
+      "id": 1,
+      "nome": "Dieta Mediterrânea",
+      "descricao": "Baseada nos padrões alimentares tradicionais de países mediterrâneos, esta dieta enfatiza o consumo de frutas, vegetais, grãos integrais, peixe, nozes e azeite de oliva, com consumo moderado de laticínios e vinho tinto.",
+      "calorias": "Aproximadamente 1650-2000 calorias por dia.",
+      "imagem": "assets/img/mediterranea.jpg"
+  },
+  {
+      "id": 2,
+      "nome": "Dieta Vegetariana",
+      "descricao": "Esta dieta exclui carne e produtos derivados, mas inclui uma variedade de alimentos como frutas, vegetais, grãos integrais, legumes, nozes e sementes.",
+      "calorias": "Aproximadamente 1700-2050 calorias por dia.",
+      "imagem": "assets/img/vegetariana.jpg"
+  },
+  {
+      "id": 3,
+      "nome": "Dieta Vegana",
+      "descricao": "Similar à dieta vegetariana estrita, a dieta vegana exclui todos os produtos de origem animal, incluindo carne, laticínios, ovos e mel.",
+      "calorias": "Aproximadamente 1700-2050 calorias por dia.",
+      "imagem": "assets/img/vegana.jpg"
+  },
+  {
+      "id": 4,
+      "nome": "Dieta Cetogênica",
+      "descricao": "Uma dieta baixa em carboidratos e rica em gorduras saudáveis, com uma ingestão moderada de proteínas. O objetivo é induzir o estado de cetose, onde o corpo queima gordura como principal fonte de energia.",
+      "calorias": "Aproximadamente 1850-2200 calorias por dia.",
+      "imagem": "assets/img/cetogenica.jpg"
+  },
+  {
+      "id": 5,
+      "nome": "Dieta Paleolítica",
+      "descricao": "Inspirada nos padrões alimentares dos nossos ancestrais do período paleolítico, esta dieta enfatiza alimentos não processados, como carne magra, peixe, frutas, vegetais, nozes e sementes.",
+      "calorias": "Aproximadamente 1850-2200 calorias por dia.",
+      "imagem": "assets/img/paleolitica.jpg"
+  },
+  {
+      "id": 6,
+      "nome": "Dieta Flexitariana",
+      "descricao": "Uma abordagem flexível para a alimentação, que combina elementos de uma dieta vegetariana com a inclusão ocasional de carne ou peixe.",
+      "calorias": "Aproximadamente 1700-2050 calorias por dia.",
+      "imagem": "assets/img/flexitariana.jpg"
+  }
+  ]
