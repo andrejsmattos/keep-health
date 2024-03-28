@@ -9,20 +9,41 @@ import { ActivatedRoute, Router } from '@angular/router';
     HeaderComponent
   ],
   templateUrl: './diet-detail.component.html',
-  styleUrl: './diet-detail.component.css'
+  styleUrl: './diet-detail.component.scss'
 })
 export class DietDetailComponent {
+  
+  // dietas: [
+  //   {
+      
+  //   }
+  // ]
 
-  paramValue: any = 0;
+  dietId: number = 0;
+  diets: any;
+  diet: any;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router){}
 
   ngOnInit(){
     console.log(this.router.url);
-    this.activatedRoute.params.subscribe((params)=>{
-      console.log(params);
-      this.paramValue = params['id']
+    this.activatedRoute.params.subscribe((param)=>{
+      this.dietId = param['id']
     });
+
+    this.diets = this.getDiets();
+    this.diet = this.diets.find((diet: {id: number}) => diet.id == this.dietId )
   }
+
+
+  getDiets(){
+    const diets = localStorage.getItem('diets');
+    if(!!diets) {
+      return JSON.parse(diets);
+    } else {
+      return [];
+    }
+  }
+
 
 }

@@ -1,10 +1,14 @@
-<app-header />
+<app-header></app-header>
 
-<p>Dieta funciona!  </p>
-<!-- <div class="dietas-container">
-  <div class="card" *ngFor="let item of dietas" (click)="redirectToDetail(item.dieta)">
-    <img src="" alt="dieta.nome">
-    <h3>{{ item.dieta }}</h3>
-    <p></p>
+<div class="pesquisar-dieta">
+  <input type="text" [(ngModel)]="diet" (keyup)="pesquisarDieta()">
+  <button class="btn-pesquisar" type="button" (click)="pesquisarDieta()">Pesquisar</button>
+</div>
+
+<div class="dietas-container">
+  <div class="card" *ngFor="let diet of filteredDiets" (click)="redirectToDetail(diet.id)">
+    <img src="{{ diet.imagem }}" alt="{{ diet.nome }}">
+    <h3>{{ diet.nome }}</h3>
+    <p>{{ diet.calorias }}</p>
   </div>
-</div> -->
+</div>

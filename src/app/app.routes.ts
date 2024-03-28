@@ -20,11 +20,6 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: '**',
-    title: 'Início',
-    component: HomeComponent
-  },
-  {
     path: 'login',
     title: 'Login',
     component: LoginComponent
@@ -43,7 +38,7 @@ export const routes: Routes = [
     path: 'dietas',
     children: [
       { path: '', title: 'Tipos de Dietas',component: DietComponent },
-      { path: ':id', component:DietDetailComponent }
+      { path: ':id', component: DietDetailComponent }
     ]
   }
 ];

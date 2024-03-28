@@ -1,5 +1,18 @@
 <app-header />
-<p>diet-detail works!</p>
-<strong>{{paramValue}}</strong>
 
-<a routerLink="['dietas', '1']"></a>
+<div class="diet-container">
+  
+  <div class="image">
+    <img src="{{ diet.imagem }}" alt="{{ diet.nome }}">
+  </div>
+  
+  <h2>{{ diet.nome }}</h2>
+  <div class="details">
+    <p>
+      <strong>Descrição: </strong> {{ diet.descricao }}
+    </p>
+    <p>
+      <strong>Calorias: </strong> {{ diet.calorias }}
+    </p>
+  </div>
+</div>
