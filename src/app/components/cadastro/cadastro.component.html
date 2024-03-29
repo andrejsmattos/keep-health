@@ -1,43 +1,68 @@
 <div class="cadastro">
-  <form (ngSubmit)="cadastrarUsuario()" [formGroup]="formCadastro">
+  <form (ngSubmit)="cadastrarUsuario()" [formGroup]="formCadastro" #formDir="ngForm">
 
     <div class="elemento-form">
-      <label for="nome">Nome</label>
-      <input name="nome" type="text" formControlName="nome" required>
-    </div>
+      <label for="nome">Nome*</label>
+      <input name="nome" type="text" formControlName="nome" placeholder="Nome">
+      <div *ngIf="nome.dirty && nome.touched && nome.errors && nome.errors?.['required']">
+        <p class="error-validation">Preencha este campo para continuar</p>
+      </div>
+    </div>      
     
     <div class="elemento-form">
-      <label for="email">Email</label>
-      <input name="email" type="email" formControlName="email" required>
+      <label for="email">Email*</label>
+      <input name="email" type="email" formControlName="email" placeholder="exemplo@mail.com">
+      <div *ngIf="email.dirty && email.touched && email.errors && email.errors?.['required']">
+        <p class="error-validation">Preencha este campo para continuar</p>
+        <p *ngIf="email.dirty && email.touched && email.errors?.['email'] && formDir.submitted" class="error-validation">Digite um email válido</p>
+      </div>
     </div>
 
     <div class="elemento-form">
       <div class="element-form"></div>
-      <label for="peso">Peso (kg)</label>
-      <input class="peso" name="peso" type="number" formControlName="peso" required>
-      <label for="altura">Altura (cm)</label>
-      <input class="altura" name="altura" type="number" formControlName="altura" required>
+      <label for="peso">Peso(kg)*</label>
+      <input class="peso" name="peso" type="number" formControlName="peso" placeholder="em quilos">
+      <div *ngIf="peso.dirty && peso.touched && peso.errors && peso.errors?.['required']">
+        <p class="error-validation">Preencha este campo para continuar</p>
+      </div>
+      <label for="altura">Altura(cm)*</label>
+      <input class="altura" name="altura" type="number" formControlName="altura" placeholder="em centímetros">
+      <div *ngIf="altura.dirty && altura.touched && altura.errors && altura.errors?.['required']">
+        <p class="error-validation">Preencha este campo para continuar</p>
+      </div>
     </div>
   
     <div class="elemento-form">
-      <label for="dataNascimento">Data de nascimento</label>
-      <input name="dataNascimento" type="date" formControlName="dataNascimento" required>
+      <label for="dataNascimento">Data de nascimento*</label>
+      <input name="dataNascimento" type="date" formControlName="dataNascimento">
+      <div *ngIf="dataNascimento.dirty && dataNascimento.touched && dataNascimento.errors && dataNascimento.errors?.['required']">
+        <p class="error-validation">Preencha este campo para continuar</p>
+      </div>
     </div>
 
     <div class="elemento-form">
-      <label for="cep">CEP</label>
-      <input name="cep" type="number" formControlName="cep" id="cep" required>
+      <label for="cep">CEP*</label>
+      <input name="cep" type="number" formControlName="cep" id="cep" placeholder="digite apenas os 8 numeros do seu CEP">
+      <div *ngIf="cep.dirty && cep.touched && cep.errors && cep.errors?.['required']">
+        <p class="error-validation">Preencha este campo para continuar</p>
+      </div>
       <button id="btn-pesquisar">Pesquisar</button>
     </div>
 
     <div class="elemento-form">
-      <label for="senha">Senha</label>
-      <input name="senha" type="password" formControlName="senha" required>
+      <label for="senha">Senha*</label>
+      <input name="senha" type="password" formControlName="senha" placeholder="Senha" required>
+      <div *ngIf="senha.dirty && senha.touched && senha.errors && senha.errors?.['required']">
+        <p class="error-validation">Preencha este campo para continuar</p>
+      </div>
     </div>
 
     <div class="elemento-form">
-      <label for="confirmarSenha">Confirmar senha</label>
-      <input name="confirmarSenha" type="password" formControlName="confirmarSenha" required>
+      <label for="confirmarSenha">Confirmar senha*</label>
+      <input name="confirmarSenha" type="password" formControlName="confirmarSenha" placeholder="Senha" required>
+      <div *ngIf="confirmarSenha.dirty && confirmarSenha.touched && confirmarSenha.errors && confirmarSenha.errors?.['required']">
+        <p class="error-validation">Preencha este campo para continuar</p>
+      </div>
     </div>
 
     <div class="botoes-form">

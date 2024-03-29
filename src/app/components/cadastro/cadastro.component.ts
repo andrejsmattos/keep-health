@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,21 +10,22 @@ import { DOCUMENT } from '@angular/common';
   styleUrl: './cadastro.component.scss',
   imports: [
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    CommonModule
   ]
 })
 
 //conecta dados de formulário de template e TS
 export class CadastroComponent {
   formCadastro = new FormGroup({
-    nome: new FormControl(''),
-    email: new FormControl(''),
-    peso: new FormControl(''),
-    altura: new FormControl(''),
-    dataNascimento: new FormControl(''),
-    cep: new FormControl(''),
-    senha: new FormControl(''),
-    confirmarSenha: new FormControl(''),
+    nome: new FormControl('', [Validators.required, Validators.maxLength(3)]),
+    email: new FormControl('', [Validators.required, Validators.maxLength(3), Validators.email]),
+    peso: new FormControl('', [Validators.required, Validators.maxLength(3)]),
+    altura: new FormControl('', [Validators.required, Validators.maxLength(3)]),
+    dataNascimento: new FormControl('', Validators.required),
+    cep: new FormControl('', [Validators.required, Validators.maxLength(8), Validators.minLength(8)]),
+    senha: new FormControl('', Validators.required),
+    confirmarSenha: new FormControl('', Validators.required),
   });
   localStorage: Storage | undefined;
 
@@ -32,6 +33,37 @@ export class CadastroComponent {
     this.localStorage = document.defaultView?.localStorage;
   }
   
+  get nome(){
+    return this.formCadastro.get('nome')!;
+  }
+
+  get email(){
+    return this.formCadastro.get('email')!;
+  }
+
+  get peso(){
+    return this.formCadastro.get('peso')!;
+  }
+
+  get altura(){
+    return this.formCadastro.get('altura')!;
+  }
+
+  get dataNascimento(){
+    return this.formCadastro.get('dataNascimento')!;
+  }
+
+  get cep(){
+    return this.formCadastro.get('cep')!;
+  }
+
+  get senha(){
+    return this.formCadastro.get('senha')!;
+  }
+
+  get confirmarSenha(){
+    return this.formCadastro.get('confirmarSenha')!;
+  }
 
   cadastrarUsuario() {
     //confirma se todos os campos foram preenchidos
