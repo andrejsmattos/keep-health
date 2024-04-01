@@ -23,7 +23,7 @@ export class CadastroComponent {
     peso: new FormControl('', [Validators.required, Validators.maxLength(3)]),
     altura: new FormControl('', [Validators.required, Validators.maxLength(3)]),
     dataNascimento: new FormControl('', Validators.required),
-    cep: new FormControl('', [Validators.required, Validators.maxLength(8), Validators.minLength(8)]),
+    cep: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
     senha: new FormControl('', Validators.required),
     confirmarSenha: new FormControl('', Validators.required),
   });
@@ -92,8 +92,11 @@ export class CadastroComponent {
           const novoUsuario = {
             nome: this.formCadastro.value.nome,
             email: this.formCadastro.value.email,
+            peso: this.formCadastro.value.peso,
+            altura: this.formCadastro.value.altura,
             dataNascimento: this.formCadastro.value.dataNascimento,
-            senha: this.formCadastro.value.senha
+            senha: this.formCadastro.value.senha,
+            auth: false
           }
           let listaUsuarios = this.getUsersStorage();
         listaUsuarios.push(novoUsuario);

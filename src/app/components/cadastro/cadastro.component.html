@@ -42,12 +42,15 @@
 
     <div class="elemento-form">
       <label for="cep">CEP*</label>
-      <input name="cep" type="number" formControlName="cep" id="cep" placeholder="digite apenas os 8 numeros do seu CEP">
+      <input name="cep" type="number" formControlName="cep" placeholder="digite apenas os 8 números do seu CEP" required>
       <div *ngIf="cep.dirty && cep.touched && cep.errors && cep.errors?.['required']">
         <p class="error-validation">Preencha este campo para continuar</p>
       </div>
-      <button id="btn-pesquisar">Pesquisar</button>
+      <div *ngIf="cep.dirty && cep.touched && cep.errors && cep.errors?.['minLength(8)'] && cep.errors?.['maxnLength(8)']">
+        <p class="error-validation">Seu CEP deve conter apenas 8 números</p>
+      </div>
     </div>
+
 
     <div class="elemento-form">
       <label for="senha">Senha*</label>

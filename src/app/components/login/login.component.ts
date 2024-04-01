@@ -18,10 +18,10 @@ export class LoginComponent implements OnInit {
         senha: new FormControl('')
     });
 
-    localStorage;
+    listaUsuarios: any[];
 
     constructor(private router: Router, @Inject(DOCUMENT) private document: Document) {
-        this.localStorage = document.defaultView?.localStorage;    
+        this.listaUsuarios = this.getUsersStorage();
     };
 
     ngOnInit(): void {
@@ -30,12 +30,11 @@ export class LoginComponent implements OnInit {
     };
 
     getUsersStorage(){
-        const listaVazia: string[] = [];
-        const listaUsuarios = this.localStorage?.getItem('listaUsuarios');
+        const listaUsuarios = localStorage.getItem('listaUsuarios');
         if(!!listaUsuarios) {
           return JSON.parse(listaUsuarios);
         } else {
-          this.localStorage?.setItem('listaUsuarios', JSON.stringify(listaVazia));
+          localStorage.setItem('listaUsuarios', JSON.stringify([]));
           return [];
         };
       }
@@ -45,8 +44,12 @@ export class LoginComponent implements OnInit {
         let usuarioTeste = {
             nome: 'André',
             email: 'andre@gmail.com',
+            peso: 70,
+            altura: 173,
+            cep: 88040000,
             dataNascimento: '1989/10/07',
-            senha: '123'
+            senha: '123',
+            auth: false,
         }
         let buscarUsuario = listaUsuarios.find((usuario: { email: string }) => usuario.email === usuarioTeste.email);
         if(!buscarUsuario){
@@ -62,8 +65,11 @@ export class LoginComponent implements OnInit {
         const email = this.formLogin.value.email;
         const senha = this.formLogin.value.senha;
     
-        if (!email || !senha) {
-            alert('Preencha todos os campos');
+        if (!email) {
+            alert('Preencha o campo de email');
+        } else if (!senha) {
+            alert('Preencha o campo de senha');
+        
         } else {
             const usuario = this.emailCadastrado();
             if (usuario && usuario.senha === senha) {
@@ -76,8 +82,7 @@ export class LoginComponent implements OnInit {
 
     emailCadastrado(){
         let listaUsuarios = this.getUsersStorage();
-        let usuarioJahCadastrado = listaUsuarios.find((usuario: { email: string }) => usuario.email === this.formLogin.value.email);
-        return usuarioJahCadastrado;
+        return listaUsuarios.find((usuario: { email: string }) => usuario.email === this.formLogin.value.email);
     };
 
     cadastrar() {
@@ -85,16 +90,16 @@ export class LoginComponent implements OnInit {
     };
 
     esqueciSenha() {
-        // const email = this.formLogin.value.email;
-        // if (email) {
-        //     let usuarioJahCadastrado = this['listaUsuarios'].find((usuario: { email: string | null | undefined }) => usuario.email === email);
-        //     usuarioJahCadastrado.senha = 'a1b2c4d4';
-        //     console.log('esqueci senha chamado')
-        //     this.localStorage?.setItem('listaUsuarios', JSON.stringify(['listaUsuarios']));
-        //     alert('Sua nova senha é "a1b2c4d4"')
-        // } else {
+        const email = this.formLogin.value.email;
+        const emailCadastrado = this.emailCadastrado()
+        if (email) {
+            let usuario = this.listaUsuarios.find((usuario: { email: string | null | undefined }) => usuario.email === email);
+            usuario.senha = 'a1b2c4d4';
+            console.log('esqueci senha chamado')
+            alert('Sua nova senha é "a1b2c4d4"')
+            localStorage.setItem('listaUsuarios', JSON.stringify(this.listaUsuarios));
+        // } else if (email !== emailCadastrado) {
         //     alert('Usuário ainda não cadastrado')
-        //     this.router.navigate(['cadastro'])
-        // }
+        }
     };
 }
