@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
         } else {
             const usuario = this.emailCadastrado();
             if (usuario && usuario.senha === senha) {
+                localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
                 this.router.navigate(['home']);
             } else {
                 alert('Usuário ou senha incorretos');

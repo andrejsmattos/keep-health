@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule, DOCUMENT } from '@angular/common';
@@ -16,7 +16,8 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 })
 
 //conecta dados de formulário de template e TS
-export class CadastroComponent {
+export class CadastroComponent implements OnInit {
+  usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado')!);
   formCadastro = new FormGroup({
     nome: new FormControl('', [Validators.required, Validators.maxLength(3)]),
     email: new FormControl('', [Validators.required, Validators.maxLength(3), Validators.email]),
@@ -31,6 +32,21 @@ export class CadastroComponent {
 
   constructor(private router: Router, @Inject(DOCUMENT) private document: Document){
     this.localStorage = document.defaultView?.localStorage;
+  }
+
+  ngOnInit(): void {
+      if(localStorage.getItem('usuarioLogado')){
+        const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado')!);
+
+        this.formCadastro.patchValue({
+          nome: usuarioLogado.nome,
+          email: usuarioLogado.email,
+          peso: usuarioLogado.peso,
+          altura: usuarioLogado.altura,
+          dataNascimento: usuarioLogado.dataNascimento,
+          cep: usuarioLogado.cep
+        })
+      }
   }
   
   get nome(){

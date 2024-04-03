@@ -1,9 +1,12 @@
+<router-outlet>
+  <app-header></app-header>
+</router-outlet>
 <div class="perfil-container">
-  <h3>Nome</h3><p>{{ listaUsuarios.nome }}</p>
-  <h3>Email</h3><p>{{ listaUsuarios.email }}</p>
-  <h3>Peso</h3><p>{{ listaUsuarios.peso }}</p>
-  <h3>Altura</h3><p>{{ listaUsuarios.altura | centimetersToMeters }}</p>
-  <h3>CEP</h3>
-  <input type="number">
+  <h3>Nome</h3><p>{{ usuarioLogado.nome }}</p>
+  <h3>Email</h3><p>{{ usuarioLogado.email }}</p>
+  <h3>Peso</h3><p>{{ usuarioLogado.peso }}kg</p>
+  <h3>Altura</h3><p>{{ usuarioLogado.altura | centimetersToMeters }}m</p>
+  <h3>CEP</h3><p></p>
+  <input type="number" value="{{ usuarioLogado.cep }}">
   <button type="button" (click)="buscarEndereco()">Buscar endereço</button>
 </div>

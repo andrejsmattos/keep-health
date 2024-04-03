@@ -1,13 +1,20 @@
 <div class="cadastro">
   <form (ngSubmit)="cadastrarUsuario()" [formGroup]="formCadastro" #formDir="ngForm">
 
-    <div class="elemento-form">
+     <div class="elemento-form" [ngClass]="{'erro-formulario': (
+      formCadastro.controls.nome.dirty ||
+      formCadastro.controls.nome.touched) &&
+      formCadastro.controls.nome.errors}">
       <label for="nome">Nome*</label>
       <input name="nome" type="text" formControlName="nome" placeholder="Nome">
-      <div *ngIf="nome.dirty && nome.touched && nome.errors && nome.errors?.['required']">
-        <p class="error-validation">Preencha este campo para continuar</p>
-      </div>
-    </div>      
+
+      <span *ngIf="(formCadastro.controls.nome.dirty ||
+      formCadastro.controls.nome.touched) &&
+      formCadastro.controls.nome.errors &&
+      formCadastro.controls.nome.errors['required']" class="error-validation">
+        *Preenchimento obrigatório
+      </span>
+     </div>
     
     <div class="elemento-form">
       <label for="email">Email*</label>

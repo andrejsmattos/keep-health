@@ -11,8 +11,13 @@ import { ProfileComponent } from './components/profile/profile.component';
 export const routes: Routes = [
   {
     path: '',
-    title: 'Início',
-    component: HomeComponent
+    title: 'Login',
+    component: LoginComponent
+  },
+  {
+    path: 'perfil',
+    title: 'Perfil',
+    component: ProfileComponent
   },
   {
     path: 'home',
@@ -28,11 +33,6 @@ export const routes: Routes = [
     path: 'cadastro',
     title: 'Cadastro',
     component: CadastroComponent
-  },
-  {
-    path: 'perfil',
-    title: 'Perfil',
-    component: ProfileComponent
   },
   {
     path: 'dietas',
