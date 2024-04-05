@@ -2,11 +2,15 @@
   <app-header></app-header>
 </router-outlet>
 <div class="perfil-container">
-  <h3>Nome</h3><p>{{ usuarioLogado.nome }}</p>
-  <h3>Email</h3><p>{{ usuarioLogado.email }}</p>
-  <h3>Peso</h3><p>{{ usuarioLogado.peso }}kg</p>
-  <h3>Altura</h3><p>{{ usuarioLogado.altura | centimetersToMeters }}m</p>
-  <h3>CEP</h3><p></p>
-  <input type="number" value="{{ usuarioLogado.cep }}">
-  <button type="button" (click)="buscarEndereco()">Buscar endereço</button>
+  <p><span>Nome: </span>{{ usuarioLogado.nome }}</p>
+  <p><span>Email: </span>{{ usuarioLogado.email }}</p>
+  <p><span>Peso: </span>{{ usuarioLogado.peso }}kg</p>
+  <p><span>Altura: </span> {{ usuarioLogado.altura | centimetersToMeters }}m</p>
+  <p><span>Data de nascimento: </span> {{ usuarioLogado.datanascimento }}</p>
+  <p><span>CEP: </span>
+  <input type="number" value="{{ usuarioLogado.cep }}"></p>
+  <button type="button" (click)="buscarEndereco()" class="btn-buscar">Buscar endereço</button>
+  <div class="mostrar-endereco">
+    {{ endereco.logradouro }} - {{ endereco.bairro }}, {{ endereco.localidade }} / {{ endereco.uf }}
+  </div>
 </div>

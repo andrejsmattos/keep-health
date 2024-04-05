@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
             senha: '123',
             auth: false,
         }
-        let buscarUsuario = listaUsuarios.find((usuario: { email: string }) => usuario.email === usuarioTeste.email);
+        let buscarUsuario = listaUsuarios.find((usuario: { email: string }) => usuario.email === listaUsuarios.email);
         if(!buscarUsuario){
             listaUsuarios.push(usuarioTeste);
             localStorage.setItem("listaUsuarios", JSON.stringify(listaUsuarios));

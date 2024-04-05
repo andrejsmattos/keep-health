@@ -18,48 +18,51 @@
 }
 
 .peso {
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 
 .elemento-form {
   margin-bottom: 20px;
 
-}
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
 
-.elemento-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.elemento-form input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
 }
 
 .botoes-form {
   margin-top: 20px;
-}
 
-.botoes-form button {
-  font-size: 14px;
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  button {
+    font-size: 14px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 
-.botoes-form .btn-cadastrar {
-  background-color: #28a745;
-  color: #fff;
-}
+    &.btn-cadastrar {
+      background-color: #28a745;
+      color: #fff;
 
-.botoes-form .btn-cadastrar:hover {
-  background-color: #218838;
+      &:hover {
+        background-color: #218838;
+      }
+    }
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
 }
 
 #btn-pesquisar {
@@ -72,53 +75,17 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-#btn-pesquisar,
-#btn-voltar {
   background-color: #f0f0f0;
   color: #333;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
 }
 
-#btn-pesquisar:hover,
-#btn-voltar:hover {
-  background-color: #e0e0e0;
-}
-
-.error-validation{
+.error-validation {
   margin-top: 3px;
   color: red;
   font-size: 12px;
   padding-left: 10px;
 }
-
-
-/* .elemento-form .peso {
-  width: calc(50% - 5px);
-}
-
-.elemento-form .altura {
-  width: calc(50% - 5px);
-}
-
-.double-element-form {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.double.elemento-form {
-  margin-bottom: 20px;
-}
-  
-.double.element-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-  
-.double-element-form.elemento.form input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-} */
