@@ -1,6 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-p-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+* {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+app-header {
+  margin-bottom: 40px;
+  display: block;
+}
+
+.add-atividade-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 40px;
+  width: 80%; // Modificado para ocupar 80% da tela
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: auto;
+}
+
+.p {
+  // Estilos do parágrafo
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+
+.atividades-container {
+  width: 80%; // Modificado para ocupar 80% da tela
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.card {
+  // Estilos do card
+  margin-top: 40px;
+  width: calc(50% - 20px); // Para dois cards por linha
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  h3 {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  p {
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  @media (min-width: 768px) {
+    width: calc(33.33% - 20px); // Para três cards por linha em telas maiores
+    
+    h3 {
+      padding: 10px 10px 0 10px;
+      font-size: 18px;
+
+    }
+  
+    p {
+      padding: 10px;
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    width: calc(33.33% - 20px); // Para quatro cards por linha em telas ainda maiores
+  
+  }
+}
+
+
+

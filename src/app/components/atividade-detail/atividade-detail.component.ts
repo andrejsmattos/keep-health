@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CardModule } from 'primeng/card';
 
 
@@ -6,11 +6,14 @@ import { CardModule } from 'primeng/card';
   selector: 'app-atividade-detail',
   standalone: true,
   imports: [
-    CardModule
+    CardModule,
   ],
   templateUrl: './atividade-detail.component.html',
   styleUrl: './atividade-detail.component.scss'
 })
 export class AtividadeDetailComponent {
-
+  @Input() atividadeSelecionada: { imagem: string; nome: string; } | undefined;
+  @Input() date: Date | undefined;
+  @Input() distancia: string | undefined;
+  @Input() duracao: string | undefined;
 }

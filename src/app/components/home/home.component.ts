@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CardModule } from 'primeng/card';
+import { AtividadeDetailComponent } from '../atividade-detail/atividade-detail.component';
+import { DateFormatPipe } from '../../pipes/date-format.pipe';
 
 
 
@@ -27,7 +29,9 @@ import { CardModule } from 'primeng/card';
         FormsModule,
         CalendarModule,
         InputNumberModule,
-        CardModule
+        CardModule,
+        AtividadeDetailComponent,
+        DateFormatPipe
     ]
 })
 export class HomeComponent {
@@ -41,28 +45,31 @@ export class HomeComponent {
     duracao: string | undefined;
     
     visible: boolean = false;
-    ngOnInit() { 
+    ngOnInit() {
+
+        const storedActivities = localStorage.getItem('atividades');
+        if (storedActivities) {
+            this.listaAtividades = JSON.parse(storedActivities);
+        }
+
         this.atividades = [
-            { nome: "Caminhada" },
-            { nome: "Corrida" },
-            { nome: "Natação" },
-            { nome: "Ciclismo" },
-            { nome: "Yoga" },
-            { nome: "Pilates" },
-            { nome: "Musculação" },
-            { nome: "CrossFit" },
-            { nome: "Dança" },
-            { nome: "HIIT (High-Intensity Interval Training)" },
-            { nome: "Escalada" },
-            { nome: "Vôlei" },
-            { nome: "Alongamento" },
-            { nome: "Pular corda" },
-            { nome: "Skate" },
-            { nome: "Surf" },
-            { nome: "Remo" },
-            { nome: "Tai Chi" },
-            { nome: "Basquete" },
-            { nome: "Tênis" }
+            { nome: "Caminhada", imagem: 'assets/img/caminhada.jpg' },
+            { nome: "Corrida", imagem: 'assets/img/corrida.jpg' },
+            { nome: "Natação", imagem: 'assets/img/natacao.jpg' },
+            { nome: "Ciclismo", imagem: 'assets/img/ciclismo.jpg' },
+            { nome: "Yoga", imagem: 'assets/img/yoga.jpg' },
+            { nome: "Musculação", imagem: 'assets/img/musculacao.jpg' },
+            { nome: "CrossFit", imagem: 'assets/img/crossfit.jpg' },
+            { nome: "Dança", imagem: 'assets/img/danca.jpg' },
+            { nome: "Escalada", imagem: 'assets/img/escalada.jpg' },
+            { nome: "Vôlei", imagem: 'assets/img/volei.jpg' },
+            { nome: "Alongamento", imagem: 'assets/img/alongamento.jpg' },
+            { nome: "Skate", imagem: 'assets/img/skate.jpg' },
+            { nome: "Surf", imagem: 'assets/img/surf.jpg' },
+            { nome: "Futebol", imagem: 'assets/img/futebol.jpg' },
+            { nome: "Tai Chi", imagem: 'assets/img/taichi.jpg' },
+            { nome: "Basquete", imagem: 'assets/img/basquete.jpg' },
+            { nome: "Tênis", imagem: 'assets/img/tenis.jpg' }
         ]
         
     }
@@ -72,7 +79,7 @@ export class HomeComponent {
     }
 
     salvarDados() {
-        if (this.atividadeSelecionada && this.date && (this.distancia || this.duracao)) {
+        if (this.atividadeSelecionada && this.date || (this.distancia || this.duracao)) {
             const novaAtividade = {
                 atividadeSelecionada: this.atividadeSelecionada,
                 dataAtividade: this.date,
@@ -93,4 +100,6 @@ export class HomeComponent {
             alert("Preencha os dados para salvar a atividade.");
         }
     }
+
+
 }
